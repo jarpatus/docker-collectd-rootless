@@ -12,7 +12,6 @@ services:
     container_name: collectd
     build:
       context: src
-    privileged: true
     restart: always
     environment:
       - UID=3830
