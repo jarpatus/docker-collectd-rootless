@@ -2,7 +2,7 @@
 FROM alpine:3.18
 
 # Add packages
-RUN apk add --no-cache collectd collectd-network supervisor
+RUN apk add --no-cache collectd collectd-disk collectd-network collectd-sensors lm-sensors supervisor
 RUN apk add --no-cache telegraf --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
 
 # Add user

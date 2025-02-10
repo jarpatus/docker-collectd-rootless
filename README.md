@@ -17,8 +17,7 @@ services:
       - UID=3830
       - GID=3830
     volumes:
-      - ./config/etc/telegraf/telegraf.d/influxdb.conf:/etc/telegraf/telegraf.d/influxdb.conf
-      - /proc:/mnt/proc:ro
+      - ./config/telegraf.d:/etc/telegraf.d
     networks:
       influxdb:
 
