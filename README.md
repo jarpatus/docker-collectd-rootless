@@ -12,10 +12,10 @@ services:
     container_name: collectd
     build:
       context: src
+      args:
+        - UID=3830
+        - GID=3830
     restart: always
-    environment:
-      - UID=3830
-      - GID=3830
     volumes:
       - ./config/telegraf.d:/etc/telegraf.d
     networks:

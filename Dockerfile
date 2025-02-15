@@ -1,6 +1,10 @@
 # Start from Alpine Linux
 FROM alpine:3.18
 
+# Build args
+ARG UID=1000
+ARG GID=1000
+
 # Add packages
 RUN apk add --no-cache collectd collectd-disk collectd-network collectd-sensors lm-sensors supervisor
 RUN apk add --no-cache telegraf --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
