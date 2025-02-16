@@ -1,9 +1,9 @@
-Ultra simple collectd + telegraf container which can push metrics e.g. to influxdb.
+# Collectd rootless
+Ultra simple rootless collectd + telegraf container which can push metrics e.g. to influxdb.
 
-# Configuration 
+# Compose file
 
-## docker-compose.yaml
-
+## Example
 Example expects external network influxdb to exist so that container can connect to the database. 
 
 ```
@@ -27,7 +27,7 @@ networks:
     external: true
 ```
 
-## config/etc/telegraf/telegraf.d/influxdb.conf
+# config/telegraf.d/influxdb.conf
 
 For the example you will need authentication token, organization id and pre-existing collectd bucket. Please check influxdb documentation how to get / do these.
 
