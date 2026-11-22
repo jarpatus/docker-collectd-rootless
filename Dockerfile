@@ -1,16 +1,15 @@
 # Start from Alpine Linux
-FROM alpine:3.18
+FROM alpine:latest
 
 # Build args
-ARG UID=1000
-ARG GID=1000
+ARG UID=3830
+ARG GID=3830
 
 # Add packages
 RUN apk add --no-cache supervisor
 RUN apk add --no-cache collectd collectd-disk collectd-exec collectd-network collectd-sensors
-RUN apk add --no-cache telegraf --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
+RUN apk add --no-cache telegraf
 RUN apk add --no-cache radeontop bash
-#RUN apk add --no-cache build-base cpupower lm-sensors lm-sensors-dev
 
 # Add user
 RUN addgroup -g $GID user
@@ -27,16 +26,5 @@ COPY ./app/etc /etc
 # Drop root
 USER user
 
-# Build collectd
-#WORKDIR /tmp
-#ADD --chmod=0644 --chown=user:user https://storage.googleapis.com/collectd-tarballs/collectd-5.12.0.tar.bz2 /tmp
-#RUN tar xvfj collectd-5.12.0.tar.bz2 
-#WORKDIR /tmp/collectd-5.12.0
-#RUN ./configure --prefix=/opt/collectd --disable-netlink --disable-tcpconns --disable-wireless
-#RUN make all
-#RUN make install
-#WORKDIR /opt/collectd
-#RUN rm -rf /tmp/collectd*
-
 # Start supervisor
-CMD supervisord
+CMD ["supervisord"]
